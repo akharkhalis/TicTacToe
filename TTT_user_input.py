@@ -24,11 +24,18 @@ def user_input(user,board):
     inp = input('enter coordintes (row column)')
     i = int(inp[0]) - 1
     j = int(inp[1]) - 1
-    if user == "Player 1:":
-        board[i][j] = 'o'
+
+    if board[i][j] != '':
+        inp = input('This position is already used, choose another one:')
+        i = int(inp[0]) - 1
+        j = int(inp[1]) - 1
+        print_field(board)
     else:
-        board[i][j] = 'x'
-    print_field(board)
+        if user == "Player 1:":
+            board[i][j] = 'o'
+        else:
+            board[i][j] = 'x'
+        print_field(board)
 
 while counter < 10:
     if counter % 2 != 0:
