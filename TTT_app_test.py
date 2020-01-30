@@ -91,7 +91,7 @@ def user_input(user,board):
 
 def play_game(board):
     counter = 1
-    while not win_def(board):
+    while win_def(board) is not True:
         print_field(board)
         if counter % 2 != 0:
             user = "Player 1:"
