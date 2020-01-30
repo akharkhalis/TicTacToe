@@ -1,4 +1,3 @@
-from TTT_user_input import user_input
 field = [
     ['', '', ''],
     ['', '', ''],
@@ -107,3 +106,4 @@ def play_game(board):
 #print_field(field)
 play_game(field)
 print(win_def(field))
+print('Win!')
