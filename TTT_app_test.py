@@ -3,6 +3,9 @@ field = [
     ['', '', ''],
     ['', '', '']
 ]
+print('TicTacToe')
+print('Player 1 - O, Player 2 - X. Enter position in format RowColumn. Player 1 starts first.')
+
 
 # printing nice shaped playing field
 def print_field(board):
@@ -18,6 +21,7 @@ def print_field(board):
                 print(board[i][j])
             else:
                 print(str(board[i][j]) + " ", end="")
+
 
 # validation for win definition row, column, and diagonals starting from left top corner and right top corner
 def row_validation(board):
@@ -53,6 +57,7 @@ def rdiagonal_validation(board):
     else:
         return False
 
+
 # win definition summary :)
 def win_def(board):
     if row_validation(board) is True:
@@ -66,32 +71,32 @@ def win_def(board):
     else:
         return False
 
+
 # transforming user input from f.e. 12 to the board[0][1]
-def user_input(user,board):
+def user_input(user, board):
     print(user)
-    inp = input('enter coordintes (row column)')
+    inp = input ('Enter coordinates (row column)')
     i = int(inp[0]) - 1
     j = int(inp[1]) - 1
 
     # validation of input to the filled cells
-    # needs to add loop for 'This position is already used, choose another one:',
-    # at the moment it works only once and than swithces to the second played
     if board[i][j] != '':
-        inp = input('This position is already used, choose another one:')
-        # duplicated code, replace with function
-        i = int(inp[0]) - 1
-        j = int(inp[1]) - 1
-        if user == "Player 1:":
-            board[i][j] = 'o'
-        else:
-            board[i][j] = 'x'
-        print_field(board)
+        while board[i][j] != '':
+            inp = input('This position is already used, enter another one:')
+            # duplicated code, replace with function
+            i = int(inp[0]) - 1
+            j = int(inp[1]) - 1
+            if user == "Player 1:":
+                board[i][j] = 'o'
+            else:
+                board[i][j] = 'x'
+#            print_field(board)
     else:
         if user == "Player 1:":
             board[i][j] = 'o'
         else:
             board[i][j] = 'x'
-        print_field(board)
+#        print_field(board)
 
 
 # play game, here is a total mess, need to think how to redo this part
@@ -111,7 +116,6 @@ def play_game(board):
         counter = counter + 1
 
 
-#print_field(field)
+# print_field(field)
 play_game(field)
-print(win_def(field))
 print('Win!')
